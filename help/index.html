@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KabooBMPFontMaker マニュアル</title>
+    <style>
+        body {
+            font-family: "Meiryo", "Yu Gothic", sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: none;
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .note {
+            background-color: #e8f6f3;
+            border-left: 5px solid #1abc9c;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9em;
+        }
+
+        code {
+            background-color: #fce4ec;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+            color: #c2185b;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>KabooBMPFontMaker マニュアル</h1>
+
+
+    <section>
+        <h2>はじめに</h2>
+        <p>
+            KabooBMPFontMakerは、指定されたフォントを使用してビットマップフォント画像を作成するためのツールです。<br>
+            このツールを使用することで、ゲーム開発やグラフィック用途に適したフォントテクスチャを簡単に生成することができます。
+        </p>
+    </section>
+
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+        <a href="download/bmpfontmaker_win32_v1000.zip"
+            style="background-color: #27ae60; color: white; padding: 15px 30px; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 2em;">Win32版ダウンロード
+            (約213KB)</a>
+    </div>
+
+    <section>
+        <h2>メイン画面 (MainForm)</h2>
+        <p>
+            アプリケーションのメイン画面です。フォントの生成設定やプレビュー、保存の操作を行います。
+        </p>
+        <img src="MainForm.png" alt="メイン画面">
+        <div class="note">
+            <p><strong>主な機能:</strong></p>
+            <ul>
+                <li>フォントの選択とサイズ設定</li>
+                <li>描画プレビュー</li>
+                <li>画像の保存</li>
+                <li>各設定ウィンドウへのアクセス</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>文字セット設定 (FormMojiSet)</h2>
+        <p>
+            ビットマップフォントに含める文字（グリフ）を設定する画面です。<br>
+            必要な文字を入力エリアに入力または貼り付けることで、それらの文字がフォント画像に含まれるようになります。
+        </p>
+        <img src="FormMojiSet.png" alt="文字セット設定画面">
+    </section>
+
+    <section>
+        <h2>グラデーション設定 (SetLinearGradientBrushForm)</h2>
+        <p>
+            文字の描画に使用するブラシ（グラデーション）を設定する画面です。<br>
+            単色だけでなく、リニアグラデーションを使用して文字を装飾することができます。
+        </p>
+        <img src="SetLinearGradientBrushForm.png" alt="グラデーション設定画面">
+        <div class="note">
+            <p><strong>ヒント:</strong> 開始色と終了色、グラデーションの角度などを調整して、独自のデザインを作成できます。</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>ユニーク文字抽出 (UniqueCharReaderForm)</h2>
+        <p>
+            テキストファイルなどから、使用されている文字を重複なく抽出するための補助ツールです。<br>
+            ゲームのスクリプトファイルなどを読み込ませることで、必要な文字だけを効率的にリストアップし、文字セット設定に利用することができます。
+        </p>
+        <img src="UniqueCharReaderForm.png" alt="ユニーク文字抽出画面">
+    </section>
+
+    <section>
+        <h2>出力ファイルフォーマット</h2>
+        <p>
+            本ツールは、フォントテクスチャ画像（.png/.bmp）以外に、文字の座標情報などを記述したデータファイル（.xmlおよび.fnt）を出力します。
+        </p>
+
+        <h3>XMLファイル (.xml)</h3>
+        <p>
+            一般的なビットマップフォント形式に準拠したXML形式です。
+        </p>
+        <pre>&lt;font&gt;
+  &lt;info /&gt;
+  &lt;common lineHeight="..." base="..." scaleW="..." scaleH="..." pages="..." /&gt;
+  &lt;pages&gt;
+    &lt;page id="0" file="filename_0.png" /&gt;
+  &lt;/pages&gt;
+  &lt;chars count="..."&gt;
+    &lt;char id="..." x="..." y="..." width="..." height="..." xoffset="..." yoffset="..." xadvance="..." page="..." chnl="15" /&gt;
+    ...
+  &lt;/chars&gt;
+&lt;/font&gt;</pre>
+        <table>
+            <tr>
+                <th>タグ</th>
+                <th>属性</th>
+                <th>説明</th>
+            </tr>
+            <tr>
+                <td>common</td>
+                <td>lineHeight</td>
+                <td>行の高さ（ピクセル）</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>base</td>
+                <td>ベースラインの位置</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>scaleW, scaleH</td>
+                <td>テクスチャの幅と高さ</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>pages</td>
+                <td>テクスチャの枚数</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>id</td>
+                <td>ページID</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>file</td>
+                <td>テクスチャファイル名</td>
+            </tr>
+            <tr>
+                <td>char</td>
+                <td>id</td>
+                <td>文字コード（Unicode）</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>x, y</td>
+                <td>テクスチャ内の左上座標</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>width, height</td>
+                <td>文字の幅と高さ</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>xoffset, yoffset</td>
+                <td>描画時のオフセット</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>xadvance</td>
+                <td>次の文字までの送り幅</td>
+            </tr>
+        </table>
+        <div class="note">
+            <p><strong>注意:</strong> 「拡張情報有効」の場合、<code>u1, v1, u2, v2</code>（UV座標）および文字そのもの(<code>c</code>)などの属性が追加されます。
+            </p>
+        </div>
+
+        <h3>テキスト記述ファイル (.fnt)</h3>
+        <p>
+            XMLファイルの内容を、タグを使用しない簡潔なテキスト形式（BMFont Text Format準拠）で記述したものです。<br>
+            内容はXML版とほぼ同一です。
+        </p>
+        <pre>info
+common lineHeight=... base=... scaleW=... scaleH=... pages=...
+page id=0 file="filename_0.png"
+chars count=...
+char id=... x=... y=... width=... height=... xoffset=... yoffset=... xadvance=... page=... chnl=15
+...</pre>
+    </section>
+
+    <section>
+        <h2>免責事項</h2>
+        <p>
+            本ソフトウェアの使用によって生じた、いかなる損害についても、作者は一切の責任を負いません。<br>
+            ご自身の責任においてご利用ください。<br>
+            また、本ソフトウェアの仕様は予告なく変更される場合があります。
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Antigravity / KabooBMPFontMaker</p>
+    </footer>
+
+</body>
+
+</html>
